@@ -42,6 +42,7 @@ options:
 ${OBJ}: config.h
 
 config.h:
+	@rm $@
 	@echo creating $@ from config.def.h
 	@cp config.def.h $@
 
