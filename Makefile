@@ -42,10 +42,10 @@ options:
 ${OBJ}: config.h
 
 config.h:
-	@rm $@
+	@rm -f $@	
 	@echo creating $@ from config.def.h
 	@cp config.def.h $@
-
+	
 ${WMNAME}: ${OBJ}
 	@echo CC -o $@
 	@${CC} -o $@ ${OBJ} ${LDFLAGS}

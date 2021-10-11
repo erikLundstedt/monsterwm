@@ -1,0 +1,1 @@
+/home/erik/cProgs/suckless/monsterwm/.dir-locals.el
