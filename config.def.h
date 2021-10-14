@@ -45,7 +45,7 @@ static const AppRule rules[] = { \
 };
 
 /* helper for spawning shell commands */
-#define SHCMD(cmd) {.com = (const char*[]){"/bin/sh", "-c", cmd, NULL}}
+#define SHCMD(cmd) {.com = (const char*[]){"/bin/env","bash" , "-c", cmd, NULL}}
 
 /**
  * custom commands
@@ -53,6 +53,9 @@ static const AppRule rules[] = { \
  */
 static const char *termcmd[] = { "st",     NULL };
 static const char *menucmd[] = { "dmenu_run", NULL };
+
+//spawn(barscript|lemonbar|bash&);
+
 
 #define DESKTOPCHANGE(K,N) \
     {  SUPER,             K,              change_desktop, {.i = N}}, \
