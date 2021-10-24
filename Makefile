@@ -45,7 +45,7 @@ config.h:
 	@rm -f $@	
 	@echo creating $@ from config.def.h
 	@cp config.def.h $@
-	
+
 ${WMNAME}: ${OBJ}
 	@echo CC -o $@
 	@${CC} -o $@ ${OBJ} ${LDFLAGS}
@@ -56,9 +56,9 @@ clean:
 
 install: all
 	@echo installing executable file to ${DESTDIR}${PREFIX}/bin
-	@install -Dm755 ${WMNAME} ${DESTDIR}${PREFIX}/bin/${WMNAME}
+	@lxqt-sudo install -Dm755 ${WMNAME} ${DESTDIR}${PREFIX}/bin/${WMNAME}
 	@echo installing manual page to ${DESTDIR}${MANPREFIX}/man.1
-	@install -Dm644 ${WMNAME}.1 ${DESTDIR}${MANPREFIX}/man1/${WMNAME}.1
+	@lxqt-sudo install -Dm644 ${WMNAME}.1 ${DESTDIR}${MANPREFIX}/man1/${WMNAME}.1
 
 uninstall:
 	@echo removing executable file from ${DESTDIR}${PREFIX}/bin

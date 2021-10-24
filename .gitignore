@@ -5,8 +5,4 @@ monsterwm
 *.diff
 config.h
 
-.ccls-cache/\@\@home\@erik\@cProgs\@suckless\@monsterwm/
-
-.ccls-cache/\@home\@erik\@cProgs\@suckless\@monsterwm/
-
-.ccls-cache/\@home\@erik\@cProgs\@suckless\@monsterwm/
+.ccls-cache/*

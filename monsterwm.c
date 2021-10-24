@@ -422,10 +422,35 @@ void desktopinfo(void) {
     Desktop *d = NULL;
     Client *c = NULL;
     Bool urgent = False;
-
+/*
     for (int w = 0, i = 0; i < DESKTOPS; i++, w = 0, urgent = False) {
         for (d = &desktops[i], c = d->head; c; urgent |= c->isurgn, ++w, c = c->next);
         printf("%d:%d:%d:%d:%d%c", i, w, d->mode, i == currdeskidx, urgent, i == DESKTOPS-1 ? '\n':' ');
+    }
+*/
+
+/*
+
+typedef struct Client {
+    struct Client *next;
+    Bool isurgn, isfull, isfloat, istrans;
+    Window win;
+} Client;
+ */
+
+
+
+	for (int w = 0, i = 0; i < DESKTOPS; i++, w = 0, urgent = False) {
+
+	  for (d = &desktops[i], c = d->head; c;
+		   urgent |= c->isurgn, ++w, c = c->next)
+		;
+	  if (currdeskidx == i) {
+		printf("desktop:%d clients:%d tiling-mode:%d focused:%d isUrgent:%d \n", i, w,
+			d->mode, i == currdeskidx, urgent);
+			Window wind=c->win;
+
+      }
     }
     fflush(stdout);
 }
@@ -1188,7 +1213,7 @@ void switch_mode(const Arg *arg) {
 
 /**
  * tile clients of the given desktop with the desktop's mode/layout
- * call the tiling handler fucntion taking account the panel height
+ * call the tiling handler function taking account the panel height
  */
 void tile(Desktop *d) {
     if (!d->head || d->mode == FLOAT) return; /* nothing to arange */
