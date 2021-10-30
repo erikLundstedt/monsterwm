@@ -438,18 +438,14 @@ typedef struct Client {
 } Client;
  */
 
-
-
 	for (int w = 0, i = 0; i < DESKTOPS; i++, w = 0, urgent = False) {
-
 	  for (d = &desktops[i], c = d->head; c;
 		   urgent |= c->isurgn, ++w, c = c->next)
 		;
 	  if (currdeskidx == i) {
-		printf("desktop:%d clients:%d tiling-mode:%d focused:%d isUrgent:%d \n", i, w,
-			d->mode, i == currdeskidx, urgent);
-			Window wind=c->win;
 
+		printf("%d %d %d %d %d \n", i, w,
+			d->mode, i == currdeskidx, urgent);
       }
     }
     fflush(stdout);
@@ -1023,8 +1019,24 @@ void rotate_filled(const Arg *arg) {
  * on receival of an event call the appropriate handler
  */
 void run(void) {
+	Arg arg;
+	arg.com = "runBar";
+	spawn(&arg);
     XEvent ev;
     while(running && !XNextEvent(dis, &ev)) if (events[ev.type]) events[ev.type](&ev);
+
+/**
+ * argument structure to be passed to function by config.h
+ * com - function pointer ~ the command to run
+ * i   - an integer to indicate different states
+ * v   - any type argument
+typedef union {
+    const char** com;
+    const int i;
+    const void *v;
+} Arg;
+ */
+
 }
 
 /**
