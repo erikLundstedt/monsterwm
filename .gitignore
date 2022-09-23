@@ -4,5 +4,5 @@ monsterwm
 *~
 *.diff
 config.h
-
+.#*
 .ccls-cache/*
