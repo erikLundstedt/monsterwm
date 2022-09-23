@@ -1019,9 +1019,9 @@ void rotate_filled(const Arg *arg) {
  * on receival of an event call the appropriate handler
  */
 void run(void) {
-	Arg arg;
-	arg.com = "runBar";
-	spawn(&arg);
+  /* Arg arg; */
+  /* 	arg.com = "luakit"; */
+  /* 	spawn(&arg); */
     XEvent ev;
     while(running && !XNextEvent(dis, &ev)) if (events[ev.type]) events[ev.type](&ev);
 
@@ -1129,6 +1129,8 @@ void spawn(const Arg *arg) {
     execvp((char*)arg->com[0], (char**)arg->com);
     err(EXIT_SUCCESS, "execvp %s", (char *)arg->com[0]);
 }
+
+
 
 /**
  * tile or common tiling aka v-stack mode/layout

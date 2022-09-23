@@ -19,7 +19,7 @@
 #define SHOW_PANEL      True      /* show panel by default on exec */
 #define TOP_PANEL       True      /* False means panel is on bottom */
 #define PANEL_HEIGHT    18        /* 0 for no space for panel, thus no panel */
-#define DEFAULT_MODE    TILE      /* initial layout/mode: TILE MONOCLE BSTACK GRID FLOAT */
+#define DEFAULT_MODE    MONOCLE   /*TILE      *//* initial layout/mode: TILE MONOCLE BSTACK GRID FLOAT */
 #define ATTACH_ASIDE    True      /* False means new window is master */
 #define FOLLOW_WINDOW   False     /* follow the window when moved to a different desktop */
 #define FOLLOW_MOUSE    True     /* focus the window the mouse just entered */
@@ -47,14 +47,14 @@ static const AppRule rules[] = { \
 /* helper for spawning shell commands */
 #define SHCMD(cmd) {.com = (const char*[]){"/bin/env","bash" , "-c", cmd, NULL}}
 
+
 /**
  * custom commands
  * must always end with ', NULL };'
  */
-static const char *termcmd[] = { "st",     NULL };
+static const char *termcmd[] = { "tym",     NULL };
 static const char *menucmd[] = { "dmenu_run", NULL };
 
-//spawn(barscript|lemonbar|bash&);
 
 
 #define DESKTOPCHANGE(K,N) \
@@ -93,10 +93,6 @@ static Key keys[] = {
 
     {  SUPER|CONTROL,    XK_r,          quit,              {.i = 0}}, /* quit with exit value 0 */
     {  SUPER|CONTROL,    XK_q,          quit,              {.i = 1}}, /* quit with exit value 1 */
-
-
-
-
     {  SUPER,            XK_Return,     spawn,             {.com = termcmd}},
     {  SUPER,            XK_p,          spawn,             {.com = menucmd}},
     {  ALT,              XK_j,          moveresize,        {.v = (int []){   0,  25,   0,   0 }}}, /* move down  */

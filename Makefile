@@ -42,7 +42,7 @@ options:
 ${OBJ}: config.h
 
 config.h:
-	@rm -f $@	
+	@rm -f $@
 	@echo creating $@ from config.def.h
 	@cp config.def.h $@
 
@@ -52,7 +52,7 @@ ${WMNAME}: ${OBJ}
 
 clean:
 	@echo cleaning
-	@rm -fv ${WMNAME} ${OBJ} ${WMNAME}-${VERSION}.tar.gz
+	@rm -fv config.h ${WMNAME} ${OBJ} ${WMNAME}-${VERSION}.tar.gz
 
 install: all
 	@echo installing executable file to ${DESTDIR}${PREFIX}/bin
